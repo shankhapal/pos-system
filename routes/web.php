@@ -37,11 +37,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    //Billing Routesbilling
+    //Billing Routes
     Route::get('/billing', [BillingController::class, 'index'])->name('billing.index'); // Overview
     Route::get('/billing/create', [BillingController::class, 'create'])->name('billing.create'); // New Sale
     Route::post('/billing', [BillingController::class, 'store'])->name('billing.store'); // Store Sale
 
+    //Settings Routes
+    Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
 });
 
 // Route to handle authentication
