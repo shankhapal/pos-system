@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController; // Add import for ProductController
 use App\Http\Controllers\CustomerController; // Add import for CustomerController
 use App\Http\Controllers\ReportController; // Add import for ReportController
 use App\Http\Controllers\SettingsController; // Add import for SettingsController
+use App\Http\Controllers\BillingController; // Add import for BillingController
 
 Route::get('/', function () {
     return view('welcome');
@@ -35,6 +36,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    //Billing Routesbilling
+    Route::get('/billing', [BillingController::class, 'index'])->name('billing.index'); // Overview
+    Route::get('/billing/create', [BillingController::class, 'create'])->name('billing.create'); // New Sale
+    Route::post('/billing', [BillingController::class, 'store'])->name('billing.store'); // Store Sale
+
 });
 
 // Route to handle authentication
